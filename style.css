@@ -1,0 +1,283 @@
+/*importing a google font (Georama) with @import*/
+@import url('https://fonts.googleapis.com/css2?family=Georama&display=swap');
+
+/*some complementary color variables useful for styling*/
+:root {
+  --blue-comp: #465dd1;
+  --orange-comp: #d16b38;
+  --green-comp: #a3d138;
+  --gray-background: #7d7d7d;
+  --white-body: #faf0ed;
+}
+
+html {
+  box-sizing: border-box; /*box-sizing property allows us to include the padding and border in an element's total width and height. If we set it to 'border-box' padding and border are included in the width and height*/
+  font-size: 62.5%; /*Set font size for easy rem calculations, the default document font size = 16px, 1rem = 16px, 100% = 16px, so (100% / 16px) * 10 = 62.5%, this way 1rem = 10px (62.5% = 10px)*/
+  scroll-behavior: smooth; /*specifies whether to smoothly animate the scroll position, instead of a straight jump, when the user clicks on a link within a scrollable box (smooth value allows a smooth animated "scroll effect" between elements within the scrolling box.)*/
+}
+
+/*Base reset for all elements in the code*/
+* {
+  margin: 0;
+  padding: 0'
+}
+
+/*the '*' symbol targets all elements, but not pseudo-elements like ::before or ::after so those must be mentioned along with '*' */
+*,
+*::before,
+*::after {
+  box-sizing: inherit; /*adopts the border-box value previously stated in html*/
+}
+
+/*the next advice regarding the use of relative units is thanks to freecodecamp's example project*/
+/* the next few media queries are to set some font sizes at different screen sizes.
+ * This helps automate a bit of responsiveness.
+ * The trick is to use the rem unit for size values, margin and padding.
+ * Because rem is relative to the document font size
+ * when we scale up or down the font size on the document
+ * it will affect all properties using rem units for the values.
+*/
+
+/* I am using the em unit for @media breakpoints
+ * The calculation is the following
+ * screen size divided by browser base font size
+ * As an example: a breakpoint at 980px
+ * 980px / 16px = 61.25em
+*/
+
+/*the next @media rule is when the browser window is 1200px wide or less (1200px/16px = 75em)*/
+@media (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+/*the next @media rule is when the browser window is 980px wide or less (980px/16px = 61.25em)*/
+@media (max-width: 61.25em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+/*the next @media rule is when the browser window is 460px wide or less (460px/16px = 28.75em)*/
+@media (max-width: 28.75em) {
+  html {
+    font-size: 55%;
+  }
+}
+
+body {
+  font-family:'Georama', sans-serif; /*defaults to sans-seriff*/
+  font-size: 2rem; /*20px*/
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--white-body);
+}
+
+h1,
+h2 {
+  font-weight: 800;
+  text-align: center; /*specifies the horizontal alignment of text in an element (it works like vertical-align but in the horizontal direction)*/
+}
+
+h1 {
+  font-size: 6.5rem; /*65px*/
+}
+
+h2 {
+  font-size: 4rem; /*40px*/
+}
+
+ul {
+  list-style: none; /*removes the dots from lists (no style)*/
+}
+
+a {
+  text-decoration: none; /*removes text decoration (underline for example)*/
+  color: var(--white-body); /*plain white*/
+}
+
+img {
+  display: block; /*specifies the display behavior (the type of rendering box) of an element (with block balue, displays an element as a block element like <p>. It starts on a new line, and takes up the whole width)*/
+  width: 100%;
+}
+
+/*-----------------Navigation bar section-----------------*/
+
+#navbar {
+  display: flex; /*	Displays an element as a block-level flex container*/
+  justify-content: flex-end; /*this property aligns the flexible container's items when the items do not use all available space on the main-axis (with flex-end value, items are positioned at the end of the container)*/
+  position: fixed; /*positioned relative to the viewport, which means it always stays in the same place even if the page is scrolled*/
+  top: 0; /*with 'position: fixed', this top property sets the the distance between the top-border of the header element and the top-border of its container (body in this case, so basically the top-border of the page)*/
+  left: 0; /*with 'position: fixed', this left property sets the the distance between the left-border of the header element and the left-border of its container (body in this case, so basically the left-border of the page)*/
+  width: 100%; /*takes up 100% of available width from the parent element*/
+  background: var(--blue-comp);
+  box-shadow: 0 2px 6px #000; /*this property attaches one or more shadows to an element.*/
+}
+
+#navbar ul {
+  display: flex;
+  margin-right: 2.5rem; /*25px*/
+}
+
+#navbar a {
+  display: block;
+  font-size: 2.5rem;
+  padding: 1.5rem;
+}
+
+#navbar a:hover {
+  background: var(--green-comp);
+  color: #000; /*plain black*/
+}
+
+/*the next @media rule is when the browser window is 460px wide or less (460px/16px = 28.75em)*/
+@media (max-width: 28.75em) {
+  #navbar {
+    justify-content: center;
+  }
+  
+  #navbar ul {
+    margin: 0 2rem;
+  }
+}
+
+/*-----------------Welcome section------------------*/
+
+#welcome-section {
+  display: flex;
+  flex-direction: column; /*The flex-direction property specifies the direction of the flexible items, as a column in this case (the element must be a flexible item to work properly)*/
+  justify-content: center; /*this property aligns the flexible container's items when the items do not use all available space on the main-axis (horizontally). With center value, items are positioned in the center of the container*/
+  align-items: center; /*this property specifies the default alignment for items inside the flexible container (In Flexbox, it controls the alignment of items on the Cross Axis). With center value, items are positioned at the center of the container.*/
+  width: 100%;
+  height: 100vh; /*1vh = 1% of the height of the viewport (with 100vh, the height of this section equals the height of the viewport)*/
+  background-color: #000; /*plain black*/
+  background-image: linear-gradient(to top, #0F2027 0%, #203A43 50%, #2C5364 100%); /*this property sets one or more background images for an element (helps to set a linear gradient as the background image.).*/
+}
+
+#welcome-section p {
+  font-size: 3rem;
+  font-weight: 200;
+  font-style: italic;
+  color: var(--orange-comp);
+}
+
+/*-----------------Projects section------------------*/
+
+#projects {
+  text-align: center;
+  padding: 10rem 2rem;
+  background: var(--orange-comp);
+}
+
+#projects h2 {
+  max-width: 650px;
+  margin: 0 auto 5rem auto; /*help to center the header of this section*/
+}
+
+/*the next @media rule is when the browser window is 460px wide or less (460px/16px = 28.75em)*/
+@media (max-width: 28.75em) {
+  #projects h2 {
+    font-size: 3.5rem;
+  }
+}
+
+/*setting up a grid for the projects*/
+.projects-grid {
+  display: grid; /*Displays an element as a block-level grid container*/
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /*this property specifies the number (and the widths) of columns in a grid layout.*/
+  grid-gap: 5rem; /*this property defines the size of the gap between the rows and columns in a grid layout*/
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto; /*centers the grid*/
+  margin-bottom: 5rem;
+}
+
+/*the next @media rule is when the browser window is 490px wide or less (490px/16px = 30.625em)*/
+@media (max-width: 30.625em) {
+  #project {
+    padding: 6rem 1rem;
+  }
+  
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project {
+  background: var(--gray-background);
+  box-shadow: 0 2px 6px #000;
+  border-radius: 5px;
+}
+
+.project:hover {
+  background: var(--green-comp);
+  color: #000; /*plain black*/
+}
+
+.project-img {
+  height: calc(100% - 5rem); /*this function performs a calculation to be used as the property value. This way the gray background in the project title can be down under the image*/
+  width: 100%;
+  object-fit: cover; /*this property is used to specify how an <img> (this case) or <video> should be resized to fit its container. With cover value, the image keeps its aspect ratio and fills the given dimension. The image will be clipped to fit*/
+}
+
+.project-title {
+  font-size: 2.25rem;
+  padding: 0.5rem 0.5rem;
+}
+
+/*-----------------Contact section------------------*/
+#contact {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /*Items are positioned in the center of the container*/
+  text-align: center; /*specifies the horizontal alignment of text in an element (it works like vertical-align but in the horizontal direction)*/
+  align-items: center; /*specifies the default alignment for items inside the flexible container (In Flexbox, it controls the alignment of items on the Cross Axis)*/
+  width: 100%;
+  height: 80vh;
+  padding: 0 2rem;
+  background-image: linear-gradient(to bottom, #0F2027 0%, #203A43 50%, #2C5364 100%);
+}
+
+#contact p {
+  font-style: italic;
+}
+
+.btn {
+  display: inline-block; /*Displays an element as an inline-level block container. The element itself is formatted as an inline element, but you can apply height and width values*/
+  padding: 2rem 4rem;
+}
+
+.contact-links {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-width: 980px;
+  margin-top: 2rem;
+  flex-wrap: wrap; /*this property specifies whether the flexible items should wrap or not. The wrap value specifies that the flexible items will wrap if necessary*/
+}
+
+.contact-details {
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 6px #000; /*this property adds shadow to text.*/
+  transition: color 0.2s ease-out;
+}
+
+.contact-details:hover {
+  color: var(--green-comp);
+}
+
+/*------------------Footer section------------------*/
+
+footer {
+  font-weight: 400;
+  display: flex;
+  justify-content: flex-end;
+  padding: 2rem;
+  background: var(--blue-comp);
+  border-top: 4px solid var(--orange-comp);
+}
+
+footer p {
+  margin: 1rem;
+}
