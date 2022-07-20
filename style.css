@@ -19,7 +19,7 @@ html {
 /*Base reset for all elements in the code*/
 * {
   margin: 0;
-  padding: 0'
+  padding: 0;
 }
 
 /*the '*' symbol targets all elements, but not pseudo-elements like ::before or ::after so those must be mentioned along with '*' */
